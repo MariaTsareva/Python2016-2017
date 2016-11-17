@@ -7,15 +7,15 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body style="background: #efefef;">
-	<table border = 1>
-         <!-- {% for name, oreo in stats.iteritems() %} -->
+	<table border = 1 style="width:100px; height: 100px;">
+         {% for row in counts.iteritems() %} 
          
             <tr>
-               <th> {{ name }} </th>
-               <td> {{ word }} </td>
+               <th> {{ row[0] }} </th>
+               <td> {{ row[1] }} </td>
             </tr>
             
-         <!-- {% endfor %} -->
+          {% endfor %} 
       </table>
 </body>
 </html>
