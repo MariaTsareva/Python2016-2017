@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Oreo World</title>
+	<link rel="icon" type="image/png" href="static/орео1.png">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+</head>
+<body style="background: #efefef;">
+ <form>
+ <label style="position:relative; left: 35px;"><input type="text" name="search" placeholder="Поиск"></label>
+ <label style="position:relative; left: 30px; display:inline;"><input type="submit" name="Искаnm" value="Искать"></label>
+ </form>
+	<h1 style="position:relative; left: 465px;">Добро пожаловать!</h1>
+	<p >Печенье "Орео" стало натоящим трендом по всему миру, и сейчас мы можем наблюдать, как широко стало употребление этого продукта: Чизкейки и торты с Орео, кофе и какао с Орео, мороженое с Орео и так далее. Существует множество мнений по поводу того, как правильно произносить это название.<br> А как говорите Вы?</p>
+	<img src="{{url_for('static', filename='орео1.png')}}" style="width: 350px; height: 400px; left: 650px; position: relative; top: 50px;">
+
+	<h3 style="position:relative; left: 250px; bottom: 400px;">Заполните анкету</h3>
+	
+	<form class="survey" style="bottom:400px; position:relative; left: 250px; background: #ffffff; width: 250px; height: 460px; line-height: 1.5;">
+	
+		<label style="position:relative; left: 35px;">Ваше имя<br><input type="text" name="name" placeholder="Имя"></label>
+		<label style="position:relative; left: 35px;">Образование<br><input type="text" name="ausbildung" placeholder="Образование"></label> 
+		<label style="position:relative; left: 35px;"><br>Пол<br></label>
+		<label style="position:relative; left: 35px;"><input type="radio" name="sex" value="женский" >женский</label>
+		<label style="position:relative; left: 35px;"><input type="radio" name="sex" value="мужской">мужской</label>
+		<label style="position:relative; left: 35px;"><br>Возраст<br><input type="text" name="age" placeholder="Возраст"></label>
+		<label style="position:relative; left: 35px;"><br>Родной язык<br><input type="text" name="idiom" placeholder="Язык"></label>
+		<label style="position:relative; left: 35px;"><br>Родной город<br><input type="text" name="city" placeholder="Город" id="city"></label>
+		<label style="position:relative; left: 35px;"><br><br>Как Вы скажете?<br></label>
+		<label style="position:relative; left: 35px;"><input type="radio" name="cookie", value="Орео" >Óрео<br></label>
+		<label style="position:relative; left: 35px;"><input type="radio" name="cookie", value="орЕо" >Орéо</label>
+		<label style="position:relative; left: 35px;"><br><br>Спасибо за голосование!<br><input type="submit" name="Отправить" value="Отправить"></label>
+	
+	</form>
+	
+	<p style="position: relative; bottom: 930px; left: 1150px;">На сайте вы найдете страницы:</p>
+		<ul style="list-style-image: url(static/oreo11.png); position: relative; left: 1150px; bottom: 900px;">
+			{% for name, url in urls.items() %}
+			<li><a href="{{ url }}">{{ name }}</a></li>
+			{% endfor %}
+		</ul>
+</body>
+</html>
