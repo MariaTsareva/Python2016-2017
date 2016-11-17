@@ -62,13 +62,14 @@ def json_result():
     return render_template('json_result.html', txt=name)
 
 
+
 @app.route('/stats')
 def stats():
     #file = open('bigdata.txt', 'r', encoding = 'utf-8')
     df = pd.read_csv('bigdata.txt', sep=',', header = None) 
-    df.columns=['sex','word', 'ausbildung', 'name', 'idiom', 'age', 'city']  
+    df.columns=[ 'ausbildung', 'name', 'age', 'idiom', 'word', 'city','sex']  
     counts = df.groupby('word').size(); 
-    return('stats.html')
+    return render_template('stats.html', counts=counts)
 
     
     
