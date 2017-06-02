@@ -80,8 +80,8 @@ def word_change(form, words):
         if forr.tag.POS == 'ADJF':
 #            print('x= ', x)
             w = str(forr.inflect(set(x[-1:-2])))
-#            w = str(forr.inflect({x[-2]}))
-#            w = str(forr.inflect({x[-3]}))
+        elif str(forr.tag) == x:
+            w = str(forr)
         else:
             w = str(forr.inflect(set(x)))
         if 'Parse' in w:
