@@ -120,6 +120,7 @@ def unirand(seq):
 
 if __name__ == '__main__':
     model = train('Harry_Potter.txt')
+    #model = train('https://github.com/MariaTsareva/Python2016-2017/blob/master/ProBot/Harry_Potter.txt')
     
 #    for i in range(10):
     print ('Ответ', generate_sentence(model))
