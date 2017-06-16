@@ -11,10 +11,32 @@ import phrases
 import random
 from random import uniform
 from collections import defaultdict
+
+WEBHOOK_URL_BASE = "https://{}:{}".format(conf.WEBHOOK_HOST, conf.WEBHOOK_PORT)
+WEBHOOK_URL_PATH = "/{}/".format(conf.TOKEN)
+
 bot = telebot.TeleBot(conf.TOKEN, threaded=False)
 r_alphabet = re.compile(u'[а-яА-Я0-9-]+|[.,:;?!]+')
 str1 = input("Введите предложение: ")
 regEng = re.compile('[a-zA-z]+')
+bot.remove_webhook()
+bot.set_webhook(url=WEBHOOK_URL_BASE+WEBHOOK_URL_PATH)
+app = flask.Flask(__name__)
+@app.route('/', methods=['GET', 'HEAD'])
+def index():
+    return 'ok'
+
+
+# обрабатываем вызовы вебхука = функция, которая запускается, когда к нам постучался телеграм 
+@app.route(WEBHOOK_URL_PATH, methods=['POST'])
+def webhook():
+    if flask.request.headers.get('content-type') == 'application/json':
+        json_string = flask.request.get_data().decode('utf-8')
+        update = telebot.types.Update.de_json(json_string)
+        bot.process_new_updates([update])
+        return ''
+    else:
+        flask.abort(403)
 #def get_word(str1):
 #    words = re.compile('\w+').findall(str1)
 ##    word = random.choice(words)
